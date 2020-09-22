@@ -1,6 +1,6 @@
-# dartpersonalexpense
+# Dart Personal Expense Tracker App
 
-A new Flutter project.
+This is the app i created while trying to learn Dart & Flutter
 
 ## Getting Started
 
