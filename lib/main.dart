@@ -1,3 +1,4 @@
+import 'package:dartpersonalexpense/ExpenseCard.dart';
 import 'package:dartpersonalexpense/ExpenseModel.dart';
 import 'package:flutter/material.dart';
 
@@ -5,11 +6,10 @@ main() {
   runApp(MyExpenseTracker());
 }
 
-class MyExpenseTracker extends StatelessWidget {
+class MyAppState extends State<MyExpenseTracker> {
   final List<Expense> expenses = [];
 
-  @override
-  Widget build(BuildContext context) {
+  MyAppState() {
     expenses.add(Expense(
         id: 'This is in shopping mall',
         amount: 100,
@@ -25,6 +25,10 @@ class MyExpenseTracker extends StatelessWidget {
         amount: 50,
         madeon: DateTime.now(),
         type: 'Charity'));
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -57,34 +61,30 @@ class MyExpenseTracker extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: expenses.map((exp) {
-                  return Card(
-                    child: Row(
-                      children: [
-                        Card(
-                          margin: EdgeInsets.all(20),
-                          child: Text(
-                            "\$${exp.amount}",
-                            style:
-                                TextStyle(color: Colors.purple, fontSize: 40),
-                          ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("This is from shopping"),
-                            Text("date time here")
-                          ],
-                        )
-                      ],
-                    ),
-                  );
+                  return ExpenseCard(exp);
                 }).toList(),
               ),
             ),
+            FloatingActionButton(
+              child: Text(
+                "+",
+                style: TextStyle(
+                  fontSize: 50,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              onPressed: null,
+            )
           ]),
         ),
       ),
     );
+  }
+}
+
+class MyExpenseTracker extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
   }
 }
