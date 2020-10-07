@@ -33,6 +33,14 @@ class MyAppState extends State<MyExpenseTracker> {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Expense Tracker"),
+          actions: [
+            FlatButton(
+                color: Colors.white,
+                onPressed: null,
+                child: Text("+",
+                    textAlign: TextAlign.end,
+                    style: TextStyle(fontSize: 50, color: Colors.white)))
+          ],
         ),
         body: Container(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
